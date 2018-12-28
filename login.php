@@ -13,25 +13,7 @@
 </head>
 <body class="h-100">
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 ">
-	    <span class="justify-content-start" >
-    	<a href="https://harieshjay.github.io/" ><img src="logo.png" style="width: 30px; margin-right: 10px"></a>
-    	</span>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse justify-content-end " id="navbarText">
-	    <ul class="navbar-nav ml-auto justify-content-end">
-	      <li class="nav-item ">
-	        <a class="nav-link" href="index.html">Home</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="login.html">Login</a>
-	      </li>
-	    </ul>
-	</div>
-	</nav>
-
+	<?php include 'nav.php'; ?>
 
 
 	<div class="h-100 container">
