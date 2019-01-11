@@ -1,9 +1,27 @@
 <?php 
 
 
-
-
 include 'nav.php'; 
+require_once 'pdo.php';
+
+
+$plan_name = $_POST['plan_name'];
+$date_start = $_POST['date_start'];
+$date_end = $_POST['date_end'];
+$city_start = $_POST['city_start'];
+$state_start = $_POST['state_start'];
+$code_start = $_POST['code_start'];
+$city_end = $_POST['city_end'];
+$state_end = $_POST['state_end'];
+$code_end =$_POST['code_end'];
+
+$sql = 'INSERT INTO PlanInfo( plan_name, date_start, date_end, city_start, city_end, state_start, state_end, code_start, code_end) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$plan_name, $date_start, $date_end, $city_start, $city_end, $state_start, 
+	$state_end, $code_start, $code_end]);
+
+
 
 
 
@@ -38,52 +56,52 @@ include 'nav.php';
 			<h4 class="mb-4 text-center">Name your Adventure</h4>
 			<div class="row form-group">
     			<input type="text" class="form-control" id="TripName" placeholder="Enter Trip Name"
-    			name="TripName">
+    			name="plan_name">
 			</div>
 			<h4 class="m-4 text-center">Time Frame:</h4>
 			<div class="row form-group">
 				<div class="col-6">
 					<label for="StartDate" >Start Date</label>
-					<input type="date" name="StartDate" class="form-control" >
+					<input type="date" name="date_start" class="form-control" >
 				</div>
 				<div class="col-6">
 					<label for="EndDate">End Date</label>
-					<input type="date" name="EndDate" class="form-control" >
+					<input type="date" name="date_end" class="form-control" >
 				</div>
 			</div>
-			<h4 class="m-4 text-center">Start Location</h4>
+			<h4 class="m-4 text-center">Start Location:</h4>
 			<div class="row form-group">
 				<div class="col-lg col-md-12" >
 					<label for="StartCity">City</label>
-					<input type="text" name="StartCity" class="form-control">
+					<input type="text" name="city_start" class="form-control">
 				</div>
 				<div class="col-lg col-md-12">
 					<label for="StartState">State/Province</label>
-					<input type="text" name="StartState" class="form-control">
+					<input type="text" name="state_start" class="form-control">
 				</div>
 				<div class="col-lg col-md-12">
 					<label for="StartCode">Zip/Postal Code</label>
-					<input type="text" name="StartCode" class="form-control">
+					<input type="text" name="code_start" class="form-control">
 				</div>
 			</div>
-			<h4 class="m-4 text-center">End Location</h4>
+			<h4 class="m-4 text-center">End Location:</h4>
 			<div class="row form-group">
 				<div class="col-lg col-md-12" >
 					<label for="EndCity">City</label>
-					<input type="text" name="EndCity" class="form-control">
+					<input type="text" name="city_end" class="form-control">
 				</div>
 				<div class="col-lg col-md-12">
 					<label for="EndState">State/Province</label>
-					<input type="text" name="EndState" class="form-control">
+					<input type="text" name="state_end" class="form-control">
 				</div>
 				<div class="col-lg col-md-12">
 					<label for="EndCode">Zip/Postal Code</label>
-					<input type="text" name="EndCode" class="form-control">
+					<input type="text" name="code_end" class="form-control">
 				</div>
 			</div>
 			<div class="form-group">
-    			<h4 class="m-4 text-center">Other Notes</h4>
-    			<textarea class="form-control" id="note" rows="3"></textarea>
+    			<h4 class="m-4 text-center">Other Notes:</h4>
+    			<textarea class="form-control" id="note" name="notes" rows="3"></textarea>
   			</div>
 
 
