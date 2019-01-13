@@ -3,6 +3,7 @@
 
 include 'nav.php'; 
 require_once 'pdo.php';
+session_start();
 
 
 $plan_name = $_POST['plan_name'];
@@ -14,14 +15,13 @@ $code_start = $_POST['code_start'];
 $city_end = $_POST['city_end'];
 $state_end = $_POST['state_end'];
 $code_end =$_POST['code_end'];
+$notes =$_POST['notes'];
 
-$sql = 'INSERT INTO PlanInfo( plan_name, date_start, date_end, city_start, city_end, state_start, state_end, code_start, code_end) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+$sql = 'INSERT INTO PlanInfo( plan_name, date_start, date_end, city_start, city_end, state_start, state_end, code_start, code_end, notes) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$plan_name, $date_start, $date_end, $city_start, $city_end, $state_start, 
-	$state_end, $code_start, $code_end]);
-
-
+	$state_end, $code_start, $code_end, $notes]);
 
 
 

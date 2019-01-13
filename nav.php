@@ -1,5 +1,5 @@
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="jumbotr">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
 
 	    <span class="justify-content-start" >
     	<a href="https://harieshjay.github.io/" ><img src="logo.png" style="width: 30px; margin-right: 10px"></a>
@@ -25,4 +25,5 @@
 	</div>
 
 	</nav>
+</div>
 

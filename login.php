@@ -1,3 +1,21 @@
+<?php 
+require_once "pdo.php" 
+
+// $EmailEntered = $_POST['Email']
+// $Password_sha1 = sha1($_POST['Password'])
+
+// $sql = "SELECT username FROM users"
+// $sqp .= "WHERE e=:e AND password=:p"
+
+// $stmt = $pdo->prepare($sql)
+
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html class="h-100">
 <head>
@@ -11,89 +29,63 @@
 	<!-- <a href="harieshjay.github.io"><img src="logo.png" style="width: 30px"></a> -->
 
 </head>
-<body class="h-100">
-
-	<?php include 'nav.php'; ?>
+<?php include 'nav.php'; ?>
+<body class="pt-5">
 
 
 	<div class="h-100 container">
 		
 
-			<h1 class="text-center display-4 mb-4 ">Login Information</h1>
+			<h1 class="text-center display-4 m-5 ">Login Information</h1>
 
 
-		<div class="row h-100 justify-content-around align-items-start">
+		<div class="row justify-content-around align-items-start">
 
 			<div class="col-md-5 card bg-dark text-white">
 				<div class="card-body">
 					<h5 class="card-title">Login</h5>
-						<form>
+						<form method="post">
 							  <div class="form-group">
-							    <label for="exampleInputEmail1">Email address</label>
-							    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Email">
+							    <label for="Email">Email address</label>
+							    <input type="email" class="form-control" id="Email" 
+							    name="Email" aria-describedby="emailHelp" placeholder="Your Email">
 							    
 							  </div>
 							  <div class="form-group">
-							    <label for="exampleInputPassword1">Password</label>
-							    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+							    <label for="Password">Password</label>
+							    <input type="password" class="form-control" id="Password" placeholder="Password" name="Password">
 							  </div>
 							  
 							  <button type="submit" class="btn btn-primary ">Submit</button>
 						</form>
-					
-
 				</div>
-
-
-
-				
-
-
 			</div>
+		</div>
+
+
+		<!-- <div class="row">
+			<div class="card bg-dark text-white m-4 p-2 col-12 ">
+				<div class="row justify-content-around align-items-start">
+					<p>Don't have an account? Create one here.</p>
+				</div>
+				<div class="row justify-content-around align-items-start">
+				<a href="register.php" class="btn btn-primary">Register</a>
+				</div>
+			</div>
+		
+		</div> -->
+
+		<div class="row justify-content-around align-items-start mt-4">
 
 			<div class="col-md-5 card bg-dark text-white">
 				<div class="card-body">
-					<h5 class="card-title ">Register</h5>
-						<form>
-							  <div class="form-group">
-							    <label for="exampleInputEmail1">Email address</label>
-							    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Email">
-							 
-							  </div>
+					<h5 class="card-title">Don't have an account?</h5>
 
-							  <div class="form-group">
-							    <label for="exampleInputUsername">Username</label>
-							    <input type="Username" class="form-control" id="exampleInputUsername" aria-describedby="UserHelp" placeholder="Username">
-							 
-							  </div>
-							  <div class="form-group">
-							    <label for="exampleInputPassword1">Password</label>
-							    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-							  </div>
-
-							  <div class="form-group">
-							    <label for="exampleInputPassword1">Re-type Password</label>
-							    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-							  </div>
-							  
-							  <button type="submit" class="btn btn-primary ">Submit</button>
-						</form>
-
-					
-
+					<a href="register.php" class="btn btn-primary">Register</a>
+						
 				</div>
-
-
-
 			</div>
-			
-
-
-
-
 		</div>
-		
-
 
 
 
