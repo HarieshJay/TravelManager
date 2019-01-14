@@ -1,5 +1,6 @@
 <?php 
-require_once "pdo.php";
+require_once "../Scripts/pdo.php";
+include '../Scripts/nav.php';
 session_start();
 
 
@@ -17,78 +18,97 @@ if (isset($_POST['Submit'])){
 			if ( ( isset($_POST['username']) && isset($_POST['email']) && isset($_POST['Password1']) && isset($_POST['Password2']) )){
 
 
-				$email = trim($_POST['email']);
-				$password1 = trim($_POST['Password1']);
-				$password1 = trim($_POST['Password2']);
-				$username = trim($_POST['username']);
+						$email = trim($_POST['email']);
+						$password1 = trim($_POST['Password1']);
+						$password2 = trim($_POST['Password2']);
+						$username = trim($_POST['username']);
 
 
-				//Check username availability
-				$sql = 'SELECT Count(username) As num From Users WHERE username = ?';
-				$stmt = $pdo->prepare($sql);
-				$stmt->execute([$username]);
-				$usernameNum = $stmt->fetch(PDO::FETCH_ASSOC);
-
-				if ( $usernameNum['Num'] > 0){
-					$_SESSION['usernameE'] = "Taken";
-				}
-
-				//Check email availability
-				$sql = 'SELECT Count(email) As num From Users WHERE email = ?';
-				$stmt = $pdo->prepare($sql);
-				$stmt->execute([$email]);
-				$emailNum = $stmt->fetch(PDO::FETCH_ASSOC);
+						//Check username availability
+						$sql = 'SELECT Count(username) As num From Users WHERE username = ?';
+						$stmt = $pdo->prepare($sql);
+						$stmt->execute([$username]);
+						$usernameNum = $stmt->fetch(PDO::FETCH_ASSOC);
+						
 
 
-				if ( $emailNum['Num'] > 0){
-					$_SESSION['emailE'] = "Taken";
+						//Check email availability
+						$sql = 'SELECT Count(email) As num From Users WHERE email = ?';
+						$stmt = $pdo->prepare($sql);
+						$stmt->execute([$email]);
+						$emailNum = $stmt->fetch(PDO::FETCH_ASSOC);
 
-				}
+						//Password check
 
-				//Passwords errors
+						$password1Hash = password_hash($password1, PASSWORD_BCRYPT, array("cost" => 12)		);
 
-				$password1Hash = password_hash($password1, PASSWORD_BCRYPT, array("cost" => 12));
 
-				$password2Hash = password_hash($password2, PASSWORD_BCRYPT, array("cost" => 12));
 
-				if ( ! ($password1 == $password2)){
-					$_SESSION['passwordE'] = "Do not Match";
+						if ( $usernameNum['num'] > 0 ){
+						$_SESSION['usernameE'] = $username ;
+						
+
+						} else if ( $emailNum['num'] > 0){
+							echo $emailNum['Num'];
+							$_SESSION['emailE'] = $email;
+						
+						} else if ( ($password1 != $password2)){
+							$_SESSION['passwordE'] = "Do not Match";
 					
-				}
-				
+						} else {
+							$_SESSION['logged_in'] = time();
+							$sql = 'INSERT INTO Users ( username, password, email ) VALUES( ? , ? , ?  )';
+							$stmt = $pdo->prepare($sql);
+							$stmt->execute([$username, $password1Hash, $email]);
+
+							$sql = 'SELECT user_id From Users where username = ?';	
+							$stmt = $pdo->prepare($sql);
+							$stmt->execute([$username]);
+							$user_id = $stmt->fetch(PDO::FETCH_ASSOC);
+							$_SESSION["user_id"] = $user_id;
+							$_SESSION['username'] = $username;
+							
+						}
 
 
+						header("Location: register.php");
+						exit();
 
 
-
+					}
 
 			}
+
 			
 
 
-}
+			if ( isset($_SESSION['logged_in'])){
+							
 
+							header("Location: home.php");
+							exit();
+							}
 
-if (isset($_SESSION["usernameE"])){
-	echo '<div class="alert alert-danger" role="alert">';
-	echo '<strong>Darn!</strong> Username is taken';
-	echo '</div>';
+			
 
-}
-
-if (isset($_SESSION["passwordE"])){
-	echo '<div class="alert alert-danger" role="alert">';
-	echo '<strong>Darn!</strong> Passwords do not match';
-	echo '</div>';
-
-}
-
-if (isset($_SESSION["emailE"])){
-	echo '<div class="alert alert-danger" role="alert">';
-	echo '<strong>Darn!</strong> Username is already used in another account.';
-	echo '</div>';
-
-}
+			if (isset($_SESSION["usernameE"])){
+				echo '<div class="alert alert-danger" role="alert">';
+				echo '<strong>Darn!</strong> Username is taken';
+				echo '</div>';
+				unset($_SESSION["usernameE"]);
+			}
+			if (isset($_SESSION["passwordE"])){
+				echo '<div class="alert alert-danger" role="alert">';
+				echo '<strong>Darn!</strong> Passwords do not match';
+				echo '</div>';
+				unset($_SESSION["passwordE"]);
+			}
+			if (isset($_SESSION["emailE"])){
+				echo '<div class="alert alert-danger" role="alert">';
+				echo '<strong>Dratz!</strong> Email is already used in another account.';
+				echo '</div>';
+				unset($_SESSION["emailE"]);
+			}
 
 
 
@@ -104,9 +124,17 @@ if (isset($_SESSION["emailE"])){
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../bootstrap.css">
 	<style type="text/css">
-		body { overflow-y:hidden; }
+		html { background-image: url(../Images/background.jpg);
+  				background-size: cover;
+  				background-attachment: fixed;
+  				background-position: center;
+  				background-repeat: no-repeat;
+  				background-size: cover; }
+
+  		body { overflow-y:hidden; }
+
 	</style>
 
 
@@ -116,7 +144,7 @@ if (isset($_SESSION["emailE"])){
 </head>
 <body class="pt-5">
 
-	<?php include 'nav.php'; ?>
+	
 
 
 	<div class="h-100 container">

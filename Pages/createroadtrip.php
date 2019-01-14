@@ -1,8 +1,8 @@
 <?php 
 
 
-include 'nav.php'; 
-require_once 'pdo.php';
+include '../Scripts/nav.php'; 
+require_once '../Scripts/pdo.php';
 session_start();
 
 
@@ -38,17 +38,26 @@ $stmt->execute([$plan_name, $date_start, $date_end, $city_start, $city_end, $sta
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../bootstrap.css">
 
+	<style type="text/css">
+		html { background-image: url(../Images/background.jpg);
+  				background-size: cover;
+  				background-attachment: fixed;
+  				background-position: center;
+  				background-repeat: no-repeat;
+  				background-size: cover; }
 
-	<!-- <a href="harieshjay.github.io"><img src="logo.png" style="width: 30px"></a> -->
+  		body {  }
+
+	</style>
 
 </head>
-<body class="h-100">
+<body class="h-100 pt-5">
 
 	
 
-	<h1 class="display-4 text-center m-4">Create Trip</h1>
+	<h1 class="display-4 text-center m-5">Create Trip</h1>
 
 
 	<form method="post" class="m-4" name="form">

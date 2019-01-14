@@ -24,7 +24,7 @@ $stmt->execute([$plan_name, $date_start, $date_end, $city_start, $city_end, $sta
 	$state_end, $code_start, $code_end, $notes]);
 
 
-header('Location: CreateR')
+header('Location: CreateR');
 
 
 

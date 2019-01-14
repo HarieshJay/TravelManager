@@ -5,23 +5,23 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../bootstrap.css">
+
 	<style type="text/css">
 		body { overflow-y:hidden; }
 	</style>
 
 
-	<!-- <a href="harieshjay.github.io"><img src="logo.png" style="width: 30px"></a> -->
-
+	
 </head>
 <body class="h-100 align-middle">
 
-	<?php include 'nav.php'; ?>
+	<?php include '../Scripts/nav.php'; ?>
 
 
 
 	
-	<div class="Jumbotron mt-5 pt-5 position-sticky" >
+	<div class="mt-5 pt-5 position-sticky" >
 		<div class="container">
 			<h1 class="display-1 text-center">Travel Manager</h1>
 			<h1 class="text-center">Assistant to keep track of all your travel needs.</h4>
