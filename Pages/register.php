@@ -9,9 +9,11 @@ if (isset($_POST['Submit'])){
 
 
 			if (! ( isset($_POST['username']) &&  isset($_POST['email']) && isset($_POST['Password1']) && isset($_POST['Password2']) )) {
-				echo '<div class="alert alert-danger" role="alert">';
-				echo '<strong>Darn!</strong> Please enter all the required information.';
-				echo '</div>';
+				$_SESSION["nullError"] = "True";
+				header("Location: register.php");
+						exit();
+
+
 			
 			}
 
@@ -90,26 +92,33 @@ if (isset($_POST['Submit'])){
 							}
 
 			
+			if (isset($_SESSION["nullError"])){
+				echo '<div class="alert alert-danger" role="alert">';
+				echo '<strong>Darn!</strong> Please enter all the required information.';
+				echo '</div>';
 
-			if (isset($_SESSION["usernameE"])){
+			}
+
+			else if (isset($_SESSION["usernameE"])){
 				echo '<div class="alert alert-danger" role="alert">';
 				echo '<strong>Darn!</strong> Username is taken';
 				echo '</div>';
 				unset($_SESSION["usernameE"]);
 			}
-			if (isset($_SESSION["passwordE"])){
+			else if (isset($_SESSION["passwordE"])){
 				echo '<div class="alert alert-danger" role="alert">';
 				echo '<strong>Darn!</strong> Passwords do not match';
 				echo '</div>';
 				unset($_SESSION["passwordE"]);
 			}
-			if (isset($_SESSION["emailE"])){
+			else if (isset($_SESSION["emailE"])){
 				echo '<div class="alert alert-danger" role="alert">';
 				echo '<strong>Dratz!</strong> Email is already used in another account.';
 				echo '</div>';
 				unset($_SESSION["emailE"]);
 			}
 
+			
 
 
 
