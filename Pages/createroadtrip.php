@@ -3,7 +3,17 @@
 
 include '../Scripts/nav.php'; 
 require_once '../Scripts/pdo.php';
+
 session_start();
+
+if (isset($_POST['Submit'])){
+
+
+if ( empty($_POST['plan_name']) ){
+	$_SESSION['no_name'] = "set";
+	header("Location: createroadtrip.php")
+
+}
 
 
 $plan_name = $_POST['plan_name'];
@@ -17,13 +27,16 @@ $state_end = $_POST['state_end'];
 $code_end =$_POST['code_end'];
 $notes =$_POST['notes'];
 
-$sql = 'INSERT INTO PlanInfo( plan_name, date_start, date_end, city_start, city_end, state_start, state_end, code_start, code_end, notes) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+$sql = 'INSERT INTO PlanInfo( user_id, plan_name, date_start, date_end, city_start, city_end, state_start, state_end, code_start, code_end, notes) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
 $stmt = $pdo->prepare($sql);
-$stmt->execute([$plan_name, $date_start, $date_end, $city_start, $city_end, $state_start, 
+
+$stmt->execute([$_SESSION['user_id'] , $plan_name, $date_start, $date_end, $city_start, $city_end, $state_start, 
 	$state_end, $code_start, $code_end, $notes]);
 
 
+
+}
 
 
 ?>
@@ -65,7 +78,7 @@ $stmt->execute([$plan_name, $date_start, $date_end, $city_start, $city_end, $sta
 			<h4 class="mb-4 text-center">Name your Adventure</h4>
 			<div class="row form-group">
     			<input type="text" class="form-control" id="TripName" placeholder="Enter Trip Name"
-    			name="plan_name">
+    			name="plan_name" required>
 			</div>
 			<h4 class="m-4 text-center">Time Frame:</h4>
 			<div class="row form-group">
@@ -115,7 +128,7 @@ $stmt->execute([$plan_name, $date_start, $date_end, $city_start, $city_end, $sta
 
 
   			<div class="form-group text-center m-4">
-				<button type="submit" class="btn btn-secondary btn-lg">Save Plan</button>
+				<button type="submit" name="submit" class="btn btn-secondary btn-lg">Save Plan</button>
 			</div>
 
 

@@ -8,10 +8,9 @@ if (isset($_POST['Submit'])){
 
 
 
-			if (! ( isset($_POST['email']) &&  isset($_POST['password']) )) {
-				echo '<div class="alert alert-danger" role="alert">';
-				echo '<strong>Darn!</strong> Please enter all the required information.';
-				echo '</div>';
+			if ( ( empty($_POST['email']) &&  empty($_POST['password']) )) {
+				$_SESSION["empty_information"] = "set";
+				header("Location: login.php");
 			
 			}
 
@@ -103,6 +102,13 @@ if (isset($_POST['Submit'])){
 				echo '<strong>Darn!</strong> Password is Incorrect.';
 				echo '</div>';
 				unset($_SESSION["wrong_password"]);
+			}
+
+			if (isset($_SESSION["empty_information"])){
+				echo '<div class="alert alert-danger" role="alert">';
+				echo '<strong>Darn!</strong> Please enter all the required information.';
+				echo '</div>';
+				unset($_SESSION["empty_information"]);
 			}
 			
 

@@ -8,16 +8,11 @@ if (isset($_POST['Submit'])){
 
 
 
-			if (! ( isset($_POST['username']) &&  isset($_POST['email']) && isset($_POST['Password1']) && isset($_POST['Password2']) )) {
+			if ( ( empty($_POST['username']) ||  empty($_POST['email']) || empty($_POST['Password1']) || empty($_POST['Password2']) )) {
 				$_SESSION["nullError"] = "True";
 				header("Location: register.php");
-						exit();
-
-
-			
-			}
-
-			if ( ( isset($_POST['username']) && isset($_POST['email']) && isset($_POST['Password1']) && isset($_POST['Password2']) )){
+						exit();			
+			} else {
 
 
 						$email = trim($_POST['email']);
@@ -96,7 +91,7 @@ if (isset($_POST['Submit'])){
 				echo '<div class="alert alert-danger" role="alert">';
 				echo '<strong>Darn!</strong> Please enter all the required information.';
 				echo '</div>';
-
+				unset($_SESSION["nullError"]);
 			}
 
 			else if (isset($_SESSION["usernameE"])){
@@ -171,7 +166,7 @@ if (isset($_POST['Submit'])){
 					<h5 class="card-title ">Register</h5>
 						<form method="post">
 							  <div class="form-group">
-							    <label for="Email">Email address</label>
+							    <label for="email">Email address</label>
 							    <input type="email" class="form-control" id="email" 
 							    name="email" aria-describedby="emailHelp" placeholder="Your email">
 							  </div>
