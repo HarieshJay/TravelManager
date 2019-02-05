@@ -42,7 +42,7 @@ if (isset($_POST['Submit'])){
 								$_SESSION['user_id'] = $user['user_id'];
 								$_SESSION['username'] = $user['username'];
 								$_SESSION["logged_in"] = "Logged_in";
-								header("Location: home.php");
+								header("Location: plans.php");
 								exit();
 
 							
@@ -82,11 +82,9 @@ if (isset($_POST['Submit'])){
 
 
 			if ( isset($_SESSION['logged_in'])){
-							
-
-							header("Location: home.php");
-							exit();
-							}
+				header("Location: home.php");
+				exit();
+				}
 
 			
 

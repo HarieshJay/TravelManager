@@ -3,15 +3,18 @@
 
 include '../Scripts/nav.php'; 
 require_once '../Scripts/pdo.php';
+require_once '../Scripts/not_logged_in.php';
 
 session_start();
+
+
 
 if (isset($_POST['Submit'])){
 
 
 if ( empty($_POST['plan_name']) ){
 	$_SESSION['no_name'] = "set";
-	header("Location: createroadtrip.php")
+	header("Location: createroadtrip.php");
 
 }
 
@@ -26,16 +29,21 @@ $city_end = $_POST['city_end'];
 $state_end = $_POST['state_end'];
 $code_end =$_POST['code_end'];
 $notes =$_POST['notes'];
+$user_id = $_SESSION['user_id'];
 
-$sql = 'INSERT INTO PlanInfo( user_id, plan_name, date_start, date_end, city_start, city_end, state_start, state_end, code_start, code_end, notes) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+$sql = 'INSERT INTO PlanInfo( user_id, plan_name, date_start, date_end, city_start, city_end, state_start, state_end, code_start, code_end, notes) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
 $stmt = $pdo->prepare($sql);
 
-$stmt->execute([$_SESSION['user_id'] , $plan_name, $date_start, $date_end, $city_start, $city_end, $state_start, 
-	$state_end, $code_start, $code_end, $notes]);
+$stmt->execute( [$user_id , $plan_name, $date_start, $date_end, $city_start, $city_end, $state_start, $state_end, $code_start, $code_end, $notes]);
+header("Location: google.ca");
+}
 
-
-
+if (isset($_SESSION['no_name'])){
+	echo '<div class="alert alert-danger" role="alert">';
+	echo '<strong>Darn!</strong> Please enter a Plan Name.';
+	echo '</div>';
+	unset($_SESSION["wrong_password"]);
 }
 
 
@@ -66,7 +74,7 @@ $stmt->execute([$_SESSION['user_id'] , $plan_name, $date_start, $date_end, $city
 	</style>
 
 </head>
-<body class="h-100 pt-5">
+<body class="h-100 pt-5 container">
 
 	
 
@@ -128,7 +136,7 @@ $stmt->execute([$_SESSION['user_id'] , $plan_name, $date_start, $date_end, $city
 
 
   			<div class="form-group text-center m-4">
-				<button type="submit" name="submit" class="btn btn-secondary btn-lg">Save Plan</button>
+				<button type="submit" name="Submit" class="btn btn-primary ">Submit</button>
 			</div>
 
 

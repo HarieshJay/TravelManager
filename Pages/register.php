@@ -37,7 +37,7 @@ if (isset($_POST['Submit'])){
 
 						//Password check
 
-						$password1Hash = password_hash($password1, PASSWORD_BCRYPT, array("cost" => 12)		);
+						$password1Hash = password_hash($password1, PASSWORD_BCRYPT, array("cost" => 12) );
 
 
 
@@ -82,7 +82,7 @@ if (isset($_POST['Submit'])){
 			if ( isset($_SESSION['logged_in'])){
 							
 
-							header("Location: home.php");
+							header("Location: plans.php");
 							exit();
 							}
 

@@ -2,13 +2,18 @@
 require_once "../Scripts/pdo.php" ;
 include '../Scripts/nav.php';
 
-// $EmailEntered = $_POST['Email']
-// $Password_sha1 = sha1($_POST['Password'])
+session_start();
+ 
+$sql = 'SELECT * FROM PlanInfo where user_id = ?';
 
-// $sql = "SELECT username FROM users"
-// $sqp .= "WHERE e=:e AND password=:p"
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$_SESSION['user_id']]);
 
-// $stmt = $pdo->prepare($sql)
+while($row = $stmt->fetch()){
+	
+}
+
+
 
 
 
