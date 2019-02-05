@@ -38,20 +38,9 @@ $stmt->execute([$_SESSION['user_id']]);
 
   		body { overflow-y:hidden; }
 
-  		#title {
-   				clear:both;
-   				float:left;
-			}
 
 
-  		/*#plans { background-image: url(../Images/plans.jpg);
-  				background-size: cover;
-  				background-attachment: fixed;
-  				background-position: center;
-  				background-repeat: no-repeat;
-  				background-size: cover; }*/
-  		
-
+  
 
 
 	</style>
@@ -63,8 +52,8 @@ $stmt->execute([$_SESSION['user_id']]);
 
 <body class="pt-5">
 
-	<div class="rounded text-center bg-white">
-		<h1 class="text-center display-4 m-4">Travel Plans</h1>
+	<div id="title" class="rounded text-center ">
+		<h1 class="text-center display-2 m-4">Plan Directory</h1>
 	</div>
 	
 	
@@ -82,7 +71,7 @@ $stmt->execute([$_SESSION['user_id']]);
 
 
 		<div class="text-center">
-			<button type="button" class="btn btn-success btn-lg mb-3">Create New Plan</button>
+			<button type="button" class="btn btn-success btn-lg mb-3" onclick="window.location.href = 'createroadtrip.php';">Create New Plan</button>
           
           
         </div>
@@ -93,7 +82,7 @@ $stmt->execute([$_SESSION['user_id']]);
 
 		while($row = $stmt->fetch() ){
 
-		echo '<div class="row">';
+		echo '<div class="row mb-3">';
 
 		echo'	<div class="col-12 card bg-dark text-white">';
 		echo'		<div class="card-body row">';
