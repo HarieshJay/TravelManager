@@ -1,6 +1,7 @@
 <?php 
 require_once "../Scripts/pdo.php" ;
 include '../Scripts/nav.php';
+require_once '../Scripts/not_logged_in.php';
 
 session_start();
  
@@ -52,9 +53,8 @@ $stmt->execute([$_SESSION['user_id']]);
 
 <body class="pt-5">
 
-	<div id="title" class="rounded text-center ">
-		<h1 class="text-center display-2 m-4">Plan Directory</h1>
-	</div>
+	
+		<p class="text-center display-2 m-4 ">Plan Directory</p>
 	
 	
 
@@ -94,7 +94,7 @@ $stmt->execute([$_SESSION['user_id']]);
 
 		echo'			<div class="text-right col-4">';
 		echo'				<button type="button" class="btn btn-primary">View</button>';
-		echo'				<button type="button" class="btn btn-danger">Delete</button>';
+		echo'				<a href="../Scripts/delete_plan.php?plan_id='.$row['plan_id'].'&user_id='.$row['user_id'].'"><button type="button" class="btn btn-danger">Delete</button></a>';
 		echo'			</div>';
 					
 		echo'		</div>';

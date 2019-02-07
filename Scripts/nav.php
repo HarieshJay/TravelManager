@@ -50,7 +50,7 @@ session_start()
 	      <?php 
 	      if ($_SESSION['logged_in']){ 
 	      echo '<li class="nav-item">';
-	      echo '<a class="nav-link" href="../Pages/home.php">Home</a>';
+	      echo '<a class="nav-link" href="../Pages/plans.php">Plan Directory</a>';
 	      echo '</li>';
 	      echo '<li class="nav-item">';
 	      echo '<a class="nav-link" href="../Pages/createroadtrip.php">Create New Trip</a>';
