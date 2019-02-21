@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-require_once '../Scripts/bootstrap_jquery_links.php';
+require_once '../../Scripts/bootstrap_jquery_links.php';
 
  ?>
 
