@@ -12,6 +12,11 @@ require_once '../Scripts/bootstrap_jquery_links.php';
   				background-position: center;
   				background-repeat: no-repeat;
   				background-size: cover; }
+
+  		.custom_nav .navbar.navbar-fixed-top .navbar-inner{
+    			background: rgba(255, 255, 255, 0.3);
+				}
+
 </style>
 
 
