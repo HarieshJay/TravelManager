@@ -14,9 +14,22 @@ body {
   
 }
 
-nav {
+.nav {
   z-index: 0;
+  background-color: rgba(255,255,255,0.5);
+
 }
+
+#logo {
+
+  width: 50px;
+
+  
+}
+
+
+
+
 
 
 
@@ -26,10 +39,10 @@ nav {
 
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+<nav class="navbar navbar-expand-lg fixed-top ">
 
 	    <span class="justify-content-start" >
-    	<a href="https://harieshjay.github.io/" ><img src="../Images/logo.png" style="width: 30px; margin-right: 10px"></a>
+    	<a href="https://harieshjay.github.io/" ><img src="../Images/logo.png" id="logo" class="m-2"></a>
     	</span>
     	
 
@@ -44,26 +57,28 @@ nav {
 	      
 	      <?php 
 	      if ( ! isset($_SESSION['logged_in'])){ 
+	      // echo '<li class="nav-item">';
+	      // echo '<a class="nav-link" href="../Pages/index.php">Home</a>';
+	      // echo '</li>';
 	      echo '<li class="nav-item">';
-	      echo '<a class="nav-link" href="../Pages/index.php">Home</a>';
-	      echo '</li>';
-	      echo '<li class="nav-item">';
-	      echo '  <a class="nav-link" href="../Pages/login.php">Login</a>';
+        echo '  <a class="nav-link" href="../Pages/login.php"><button type="button" class="btn btn-secondary btn-lg px-3 m-2 m-3">Login Here</button></a>';
 	      echo '</li>';
 	  		} ?>
 
 	      
 	      <?php 
 	      if ($_SESSION['logged_in']){ 
-	      echo '<li class="nav-item">';
-	      echo '<a class="nav-link" href="../Pages/plans.php">Plan Directory</a>';
-	      echo '</li>';
-	      echo '<li class="nav-item">';
-	      echo '<a class="nav-link" href="../Pages/createroadtrip.php">Create New Trip</a>';
-	      echo '</li>';
-	      echo '<li class="nav-item">';
-	      echo '<a class="nav-link" href="../Scripts/logout.php">Logout</a>';
-	      echo '</li>';
+	      // echo '<li class="nav-item">';
+	      // echo '<a class="nav-link" href="../Pages/plans.php">Plan Directory</a>';
+	      // echo '</li>';
+	      // echo '<li class="nav-item">';
+	      // echo '<a class="nav-link" href="../Pages/createroadtrip.php">Create New Trip</a>';
+	      // echo '</li>';
+	      // echo '<li class="nav-item">';
+	      // echo '<a class="nav-link" href="../Scripts/logout.php">Logout</a>';
+        // echo '</li>';
+        
+        // redirect to home Angular page
 	      
 	  		}
 	      ?>
