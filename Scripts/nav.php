@@ -39,7 +39,7 @@ body {
 
 
 
-<nav class="navbar navbar-expand-lg fixed-top ">
+<nav class="navbar navbar-expand-lg fixed-top mb-4">
 
 	    <span class="justify-content-start" >
     	<a href="https://harieshjay.github.io/" ><img src="../Images/logo.png" id="logo" class="m-2"></a>
@@ -61,7 +61,7 @@ body {
 	      // echo '<a class="nav-link" href="../Pages/index.php">Home</a>';
 	      // echo '</li>';
 	      echo '<li class="nav-item">';
-        echo '  <a class="nav-link" href="../Pages/login.php"><button type="button" class="btn btn-secondary btn-lg px-3 m-2 m-3">Login Here</button></a>';
+        echo '  <a class="nav-link" href="../Pages/login.php"><button type="button" class="btn btn-secondary btn-lg px-4 m-2 m-3">Login Here</button></a>';
 	      echo '</li>';
 	  		} ?>
 

@@ -123,118 +123,123 @@ if (isset($_POST['Submit'])){
 
 <!DOCTYPE html>
 <html class="h-100">
+
 <head>
-	<title></title>
-	<meta charset="utf-8">
+    <title></title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link rel="stylesheet" type="text/css" href="../Scripts/bootstrap.css">
-
-	<style type="text/css">
-		html { 
-					/* background-image: url(../Images/background.jpg); */
-  				background-size: cover;
-  				background-attachment: fixed;
-  				background-position: center;
-  				background-repeat: no-repeat;
-  				background-size: cover; }
-
-  		body { overflow-y:hidden; }
-
-	</style>
+    <link rel="stylesheet" type="text/css" href="../Scripts/bootstrap.css">
+    <script src="../Scripts/JavaScript/jquery.background-video.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Scripts/JavaScript/jquery.background-video.css">
 
 
+		<style type="text/css">
+		
+  
 
 
-	<!-- <a href="harieshjay.github.io"><img src="logo.png" style="width: 30px"></a> -->
+    video {
+        top: 0;
+        left: 0;
+				z-index: -1;
+				Height: 110%;
+				overflow-x: hidden;
+				position: absolute;
+    		margin-left: auto;
+    		margin-right: auto;
+				
+    }
+
+    #content {
+        z-index: 10;
+
+		}
+		
+		.my-background-video{
+
+			z-index : -100;
+			
+
+		}
+
+		body{
+			overflow-x: hidden;
+			overflow-y: hidden;
+		}
+    </style>
+
+
+
+
+
+
 
 </head>
 
-<body class="pt-5">
+<body class="element-with-video-bg jquery-background-video-wrapper w-100 h-100">
 
 
-	<div class="h-100 container">
-		
-
-			<h1 class="text-center display-4 m-5 ">Login Information</h1>
-
-
-		<div class="row justify-content-around align-items-start">
-
-			<div class="col-md-5 card bg-dark text-white">
-				<div class="card-body">
-					<h5 class="card-title">Login</h5>
-						<form method="post" >
-							  <div class="form-group">
-							    <label for="Email">Email address</label>
-							    <input type="email" class="form-control" id="Email" 
-							    name="email" aria-describedby="emailHelp" placeholder="Your Email">
-							    
-							  </div>
-							  <div class="form-group">
-							    <label for="Password">Password</label>
-							    <input type="password" class="form-control" id="Password" placeholder="Password" name="password">
-							  </div>
-							  
-							  <button type="submit" name="Submit" class="btn btn-primary ">Submit</button>
-						</form>
-				</div>
-			</div>
-		</div>
+    <video class="my-background-video jquery-background-video" loop autoplay muted playsinline
+        poster="path/to/your/poster.jpg">
+        <source src="../Images/trees.mov" type="video/mp4">
+    </video>
 
 
-		<!-- <div class="row">
-			<div class="card bg-dark text-white m-4 p-2 col-12 ">
-				<div class="row justify-content-around align-items-start">
-					<p>Don't have an account? Create one here.</p>
-				</div>
-				<div class="row justify-content-around align-items-start">
-				<a href="register.php" class="btn btn-primary">Register</a>
-				</div>
-			</div>
-		
-		</div> -->
+    <div id="content" class="mb-4">
 
-		<div class="row justify-content-around align-items-start mt-4">
 
-			<div class="col-md-5 card bg-dark text-white">
-				<div class="card-body">
-					<h5 class="card-title">Don't have an account?</h5>
+        <h1 class="text-center display-4 m-5 ">Login Information</h1>
 
-					<a href="../Pages/register.php" class="btn btn-primary">Register</a>
-						
-				</div>
-			</div>
-		</div>
+
+        <div class="row justify-content-around align-items-start">
+
+            <div class="col-md-5 card bg-dark text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Login</h5>
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="Email">Email address</label>
+                            <input type="email" class="form-control" id="Email" name="email"
+                                aria-describedby="emailHelp" placeholder="Your Email">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="Password">Password</label>
+                            <input type="password" class="form-control" id="Password" placeholder="Password"
+                                name="password">
+                        </div>
+
+                        <button type="submit" name="Submit" class="btn btn-primary ">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
 
 
-	</div>
+        <div class="row justify-content-around align-items-start mt-4">
+
+            <div class="col-md-5 card bg-dark text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Don't have an account?</h5>
+
+                    <a href="../Pages/register.php" class="btn btn-primary">Register</a>
+
+                </div>
+            </div>
+        </div>
 
 
 
 
+    </div>
 
 
 
-
-
-
-
-
-
-
-
-
- 
-<script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
 
 </body>
+
 </html>
