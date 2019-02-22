@@ -128,10 +128,11 @@ if (isset($_POST['Submit'])){
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link rel="stylesheet" type="text/css" href="../bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../Scripts/bootstrap.css">
 
 	<style type="text/css">
-		html { background-image: url(../Images/background.jpg);
+		html { 
+					/* background-image: url(../Images/background.jpg); */
   				background-size: cover;
   				background-attachment: fixed;
   				background-position: center;

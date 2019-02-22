@@ -1,23 +1,27 @@
 <?php 
-
 session_start();
-require_once '../../Scripts/bootstrap_jquery_links.php';
-
+require_once '../Scripts/bootstrap_jquery_links.php';
  ?>
 
-<style type="text/css">
-		html { background-image: url(../Images/background.jpg);
-  				background-size: cover;
-  				background-attachment: fixed;
-  				background-position: center;
-  				background-repeat: no-repeat;
-  				background-size: cover; }
 
-  		.custom_nav .navbar.navbar-fixed-top .navbar-inner{
-    			background: rgba(255, 255, 255, 0.3);
-				}
+<link rel="stylesheet" type="text/css" href="../Scripts/bootstrap.css">
+
+<style type="text/css">
+
+
+body {
+  background-color: black;
+  
+}
+
+nav {
+  z-index: 0;
+}
+
+
 
 </style>
+
 
 
 
@@ -46,8 +50,6 @@ require_once '../../Scripts/bootstrap_jquery_links.php';
 	      echo '<li class="nav-item">';
 	      echo '  <a class="nav-link" href="../Pages/login.php">Login</a>';
 	      echo '</li>';
-
-
 	  		} ?>
 
 	      
@@ -67,9 +69,8 @@ require_once '../../Scripts/bootstrap_jquery_links.php';
 	      ?>
 	    </ul>
 
-	</div>
+
+      </div>
 
 	</nav>
-
-</div>
 

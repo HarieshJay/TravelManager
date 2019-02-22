@@ -62,7 +62,8 @@ if (isset($_SESSION['no_name'])){
 	<link rel="stylesheet" type="text/css" href="../bootstrap.css">
 
 	<style type="text/css">
-		html { background-image: url(../Images/background.jpg);
+		html { 
+					/* background-image: url(../Images/background.jpg); */
   				background-size: cover;
   				background-attachment: fixed;
   				background-position: center;
