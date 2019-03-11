@@ -39,7 +39,7 @@ body {
 
 
 
-<nav class="navbar navbar-expand-lg fixed-top mb-4">
+<nav class="navbar navbar-expand-lg fixed-top mb-4 mt-4">
 
 	    <span class="justify-content-start" >
     	<a href="https://harieshjay.github.io/" ><img src="../Images/logo.png" id="logo" class="m-2"></a>
@@ -68,6 +68,9 @@ body {
 	      
 	      <?php 
 	      if ($_SESSION['logged_in']){ 
+				echo '<li class="nav-item">';
+        echo '  <a class="nav-link" href="../Scripts/logout.php"><button type="button" class="btn btn-secondary btn-lg px-4 m-2 m-3">Log Out</button></a>';
+	      echo '</li>';
 	      // echo '<li class="nav-item">';
 	      // echo '<a class="nav-link" href="../Pages/plans.php">Plan Directory</a>';
 	      // echo '</li>';

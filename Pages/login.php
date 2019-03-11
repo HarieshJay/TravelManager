@@ -89,10 +89,11 @@ if (isset($_POST['Submit'])){
 			
 
 			if (isset($_SESSION["wrong_user"])){
+				unset($_SESSION["wrong_user"]);
 				echo '<div class="alert alert-danger" role="alert">';
 				echo '<strong>Darn!</strong> Email is not Found.';
 				echo '</div>';
-				unset($_SESSION["wrong_user"]);
+			
 			}
 
 			if (isset($_SESSION["wrong_password"])){
@@ -108,6 +109,10 @@ if (isset($_POST['Submit'])){
 				echo '</div>';
 				unset($_SESSION["empty_information"]);
 			}
+
+			unset($_SESSION["wrong_user"]);
+			unset($_SESSION["wrong_password"]);
+			unset($_SESSION["empty_information"]);
 			
 
 

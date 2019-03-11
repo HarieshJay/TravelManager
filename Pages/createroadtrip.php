@@ -35,7 +35,7 @@ $sql = 'INSERT INTO PlanInfo( user_id, plan_name, date_start, date_end, city_sta
 
 $stmt = $pdo->prepare($sql);
 
-$stmt->execute( [$user_id , $plan_name, $date_start, $date_end, $city_start, $city_end, $state_start, $state_end, $code_start, $code_end, $notes]);
+$stmt->execute( [7 , $plan_name, $date_start, $date_end, $city_start, $city_end, $state_start, $state_end, $code_start, $code_end, $notes]);
 header("Location: plans.php");
 }
 
@@ -63,7 +63,6 @@ if (isset($_SESSION['no_name'])){
 
 	<style type="text/css">
 		html { 
-					/* background-image: url(../Images/background.jpg); */
   				background-size: cover;
   				background-attachment: fixed;
   				background-position: center;
