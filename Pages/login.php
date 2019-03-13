@@ -4,18 +4,48 @@ include '../Scripts/nav.php';
 
 session_start();
 
+
+if ( isset($_SESSION['logged_in'])){
+	header("Location: home.php");
+	exit();
+	}
+
+
+
+if (isset($_SESSION["wrong_user"])){
+	echo '<div class="alert alert-danger" role="alert">';
+	echo '<strong>Darn!</strong> Email is not Found.';
+	echo '</div>';
+	unset($_SESSION["wrong_user"]);
+
+}
+
+if (isset($_SESSION["wrong_password"])){
+	echo '<div class="alert alert-danger" role="alert">';
+	echo '<strong>Darn!</strong> Password is Incorrect.';
+	echo '</div>';
+	unset($_SESSION["wrong_password"]);
+}
+
+if (isset($_SESSION["empty_information"])){
+	echo '<div class="alert alert-danger" role="alert">';
+	echo '<strong>Darn!</strong> Please enter all the required information.';
+	echo '</div>';
+	unset($_SESSION["empty_information"]);
+}
+
 if (isset($_POST['Submit'])){
 
 
 
-			if ( ( empty($_POST['email']) &&  empty($_POST['password']) )) {
+			if ( ( empty($_POST['email']) ||  empty($_POST['password']) )) {
 				$_SESSION["empty_information"] = "set";
 				header("Location: login.php");
 			
 			}
 
 
-			if ( ( isset($_POST['password']) && isset($_POST['email'])  )) {
+			else if ( ( isset($_POST['password']) && isset($_POST['email'])  )) {
 
 
 						$email = trim($_POST['email']);
@@ -81,38 +111,9 @@ if (isset($_POST['Submit'])){
 			
 
 
-			if ( isset($_SESSION['logged_in'])){
-				header("Location: home.php");
-				exit();
-				}
+
 
 			
-
-			if (isset($_SESSION["wrong_user"])){
-				unset($_SESSION["wrong_user"]);
-				echo '<div class="alert alert-danger" role="alert">';
-				echo '<strong>Darn!</strong> Email is not Found.';
-				echo '</div>';
-			
-			}
-
-			if (isset($_SESSION["wrong_password"])){
-				echo '<div class="alert alert-danger" role="alert">';
-				echo '<strong>Darn!</strong> Password is Incorrect.';
-				echo '</div>';
-				unset($_SESSION["wrong_password"]);
-			}
-
-			if (isset($_SESSION["empty_information"])){
-				echo '<div class="alert alert-danger" role="alert">';
-				echo '<strong>Darn!</strong> Please enter all the required information.';
-				echo '</div>';
-				unset($_SESSION["empty_information"]);
-			}
-
-			unset($_SESSION["wrong_user"]);
-			unset($_SESSION["wrong_password"]);
-			unset($_SESSION["empty_information"]);
 			
 
 
