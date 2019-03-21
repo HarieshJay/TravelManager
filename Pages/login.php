@@ -171,7 +171,7 @@ if (isset($_POST['Submit'])){
 
 		body{
 			overflow-x: hidden;
-			overflow-y: hidden;
+			/* overflow-y: hidden;  */
 		}
     </style>
 
