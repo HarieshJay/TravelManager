@@ -167,13 +167,13 @@ nav {
         $(window).scroll(function() {
             darken();
 
-            if ($(window).scrollTop() > 20 && $(window)
-                .scrollTop() < 40 && !isScrolling) {
+            if ($(window).scrollTop() > 0 && $(window)
+                .scrollTop() < 150 && !isScrolling) {
                 scroll(".p2-content");
 
             } else if ($(window).scrollTop() < $(".p2-content").offset().top && $(window)
-                .scrollTop() > $(".p2-content").offset().top - 50 && !isScrolling) {
-                scroll("#parallax-container");
+                .scrollTop() > $(".p2-content").offset().top - 150 && !isScrolling) {
+                scroll("html");
 
             }
 

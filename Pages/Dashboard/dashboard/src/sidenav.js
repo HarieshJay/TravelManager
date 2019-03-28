@@ -1,7 +1,13 @@
+// General Notes:
+
+// Using states and lifecycle methods Configure sidenav to highlight the selected page
+
 import React from "react";
 import "./Styles.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import AboutUs from "./aboutus";
+import { notStrictEqual } from "assert";
+import { METHODS } from "http";
 
 // Side-nav tutorial https://bootstrapious.com/p/bootstrap-sidebar
 
@@ -18,9 +24,7 @@ class Nav extends React.Component {
 
               <ul className="list-unstyled components">
                 <p>Music is better with friends</p>
-                <li>
-                  <Link to="/AboutUs">About</Link>
-                </li>
+
                 <li>
                   <a
                     href="#pageSubmenu"
@@ -44,6 +48,9 @@ class Nav extends React.Component {
                 </li>
                 <li>
                   <a href="#">Contact Us</a>
+                </li>
+                <li>
+                  <Link to="/AboutUs">About Tango</Link>
                 </li>
               </ul>
             </nav>
