@@ -48,6 +48,22 @@ function read(){
     return $stmt;
     
 }
+
+
+function create() {
+$sql = 'INSERT INTO PlanInfo(  plan_name, date_start, date_end, city_start, city_end, state_start, state_end, code_start, code_end, notes) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+
+$stmt = $pdo->prepare($sql);
+
+if ($stmt->execute( [$plan_name, $date_start, $date_end, $city_start, $city_end, $state_start, $state_end, $code_start, $code_end, $notes])){
+    return true;
+}
+return false;
+
+
+
+
+}
     
 
 }

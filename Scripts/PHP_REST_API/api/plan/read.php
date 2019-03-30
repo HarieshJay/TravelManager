@@ -22,7 +22,7 @@ if($num>0){
  
     // products array
     $plans_arr=array();
-    $plans_arr["records"]=array();
+    $plans_arr["records"] = array();
  
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         // extract row
@@ -30,7 +30,7 @@ if($num>0){
         // just $name only
         extract($row);
  
-        $product_item=array(
+        $plan_info=array(
             "plan_id" => $plan_id,
             "user_id" => $user_id,
             "plan_name" => $plan_name,
@@ -45,14 +45,14 @@ if($num>0){
             "code_end" => $code_end
         );
  
-        array_push($products_arr["records"], $product_item);
+        array_push($plans_arr["records"], $plan_info);
     }
  
     // set response code - 200 OK
     http_response_code(200);
  
     // show products data in json format
-    echo json_encode($products_arr);
+    echo json_encode($plans_arr);
 }
 else{
  

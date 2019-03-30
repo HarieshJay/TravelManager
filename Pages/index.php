@@ -17,6 +17,8 @@
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
 
+    <meta name="viewport" content="width=1280, initial-scale=1">
+
 
     <?php 
          require_once '../Scripts/bootstrap_jquery_links.php'; 
@@ -24,6 +26,8 @@
          
          
          ?>
+
+
 
 
 </head>
@@ -149,6 +153,12 @@ nav {
     </div>
 
     <script type="text/javascript">
+    var siteWidth = 1280;
+    var scale = screen.width / siteWidth
+
+    document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=' + siteWidth +
+        ', initial-scale=' + scale + '');
+
     var height = 0;
     isScrolling = false;
 
@@ -159,32 +169,51 @@ nav {
             children[i].style.transform = 'translateY(-' + (window.pageYOffset * i / children.length) + 'px)';
 
 
+
         }
+
+        var currentScrollTop = $(window).scrollTop();
+        $('#blackOverlay').css('opacity', currentScrollTop / 800);
     }, false)
 
 
-    $(function() {
-        $(window).scroll(function() {
-            darken();
+    $.fn.scrollEnd = function(callback, timeout) {
+        $(this).scroll(function() {
+            var $this = $(this);
+            if ($this.data('scrollTimeout')) {
+                clearTimeout($this.data('scrollTimeout'));
+            }
+            $this.data('scrollTimeout', setTimeout(callback, timeout));
+        });
+    };
 
-            if ($(window).scrollTop() > 0 && $(window)
-                .scrollTop() < 150 && !isScrolling) {
+
+    $(function() {
+
+
+        $(window).scrollEnd(function() {
+
+
+            if ($(window).scrollTop() > 0 && $(window).scrollTop() < 150 && !isScrolling) {
                 scroll(".p2-content");
 
-            } else if ($(window).scrollTop() < $(".p2-content").offset().top && $(window)
-                .scrollTop() > $(".p2-content").offset().top - 150 && !isScrolling) {
+            } else if ($(window).scrollTop() < $(".p2-content").offset().top && $(window).scrollTop() >
+                $(".p2-content").offset().top - 150 && !isScrolling) {
                 scroll("html");
 
             }
 
 
 
-        });
+        }, 70);
 
 
 
 
     });
+
+
+
 
 
 
@@ -204,8 +233,8 @@ nav {
 
 
     function darken() {
-        var currentScrollTop = $(window).scrollTop();
-        $('#blackOverlay').css('opacity', currentScrollTop / 800);
+        // var currentScrollTop = $(window).scrollTop();
+        // $('#blackOverlay').css('opacity', currentScrollTop / 800);
 
     }
     </script>
