@@ -120,6 +120,11 @@ nav {
     width: 100%;
     /* padding: 100%; */
 
+    jumbotron {
+        background-image: url("http://paperlief.com/images/dark-forest-background-wallpaper-3.jpg");
+        background-size: cover;
+    }
+
 
 }
 </style>
@@ -141,15 +146,19 @@ nav {
 
         <div class="mt-5 pt-5 position-sticky p1-content">
             <div class="container">
-                <h1 class="display-1 text-right">Travel Manager</h1>
-                <h1 class="text-right">Assistant to keep track of all your travel needs.</h4>
+                <h1 class="display-1 text-right">It Takes Two to Tango</h1>
+                <h1 class="text-right">Music is better with friends.</h4>
             </div>
         </div>
 
     </div>
 
-    <div class="p2-content">
-        <h1>hello</h1>
+    <div class="p2-content w-100 h-100 vertical-center">
+        <div class="container h-100 pt-4 pb-4">
+            <div class="row align-items-center h-100">
+
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript">
@@ -194,18 +203,18 @@ nav {
         $(window).scrollEnd(function() {
 
 
-            if ($(window).scrollTop() > 0 && $(window).scrollTop() < 150 && !isScrolling) {
+            if ($(window).scrollTop() > 0 && $(window).scrollTop() < 350 && !isScrolling) {
                 scroll(".p2-content");
 
             } else if ($(window).scrollTop() < $(".p2-content").offset().top && $(window).scrollTop() >
-                $(".p2-content").offset().top - 150 && !isScrolling) {
+                $(".p2-content").offset().top - 350 && !isScrolling) {
                 scroll("html");
 
             }
 
 
 
-        }, 70);
+        }, 100);
 
 
 

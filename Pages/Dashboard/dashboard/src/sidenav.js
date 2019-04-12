@@ -16,25 +16,48 @@ class Nav extends React.Component {
     return (
       <Router>
         <div>
-          <div className="wrapper">
+          <div class="wrapper">
             <nav id="sidebar">
-              <div className="sidebar-header">
-                <h3>It Takes Two to Tango</h3>
+              <div class="sidebar-header">
+                <h3>Bootstrap Sidebar</h3>
               </div>
 
-              <ul className="list-unstyled components">
-                <p>Music is better with friends</p>
-
+              <ul class="list-unstyled components">
+                <p>Dummy Heading</p>
+                <li class="active">
+                  <a
+                    href="#homeSubmenu"
+                    data-toggle="collapse"
+                    aria-expanded="false"
+                    class="dropdown-toggle"
+                  >
+                    Home
+                  </a>
+                  <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                      <a href="#">Home 1</a>
+                    </li>
+                    <li>
+                      <a href="#">Home 2</a>
+                    </li>
+                    <li>
+                      <a href="#">Home 3</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">About</a>
+                </li>
                 <li>
                   <a
                     href="#pageSubmenu"
                     data-toggle="collapse"
                     aria-expanded="false"
-                    className="dropdown-toggle"
+                    class="dropdown-toggle"
                   >
                     Pages
                   </a>
-                  <ul className="collapse list-unstyled" id="pageSubmenu">
+                  <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
                       <a href="#">Page 1</a>
                     </li>
@@ -47,28 +70,46 @@ class Nav extends React.Component {
                   </ul>
                 </li>
                 <li>
-                  <a href="#">Contact Us</a>
+                  <a href="#">Portfolio</a>
                 </li>
                 <li>
-                  <Link to="/AboutUs">About Tango</Link>
+                  <a href="#">Contact</a>
+                </li>
+              </ul>
+
+              <ul class="list-unstyled CTAs">
+                <li>
+                  <a
+                    href="https://bootstrapious.com/tutorial/files/sidebar.zip"
+                    class="download"
+                  >
+                    Download source
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://bootstrapious.com/p/bootstrap-sidebar"
+                    class="article"
+                  >
+                    Back to article
+                  </a>
                 </li>
               </ul>
             </nav>
 
-            <div id="content" className="d-block">
-              <nav className="navbar navbar-expand-lg navbar-light bg-light ">
-                <div className="container-fluid">
+            <div id="content">
+              <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
                   <button
                     type="button"
                     id="sidebarCollapse"
-                    className="navbar-btn"
+                    class="btn btn-info"
                   >
-                    <span />
-                    <span />
-                    <span />
+                    <i class="fas fa-align-left" />
+                    <span>Toggle Sidebar</span>
                   </button>
                   <button
-                    className="btn btn-dark d-inline-block d-lg-none ml-auto"
+                    class="btn btn-dark d-inline-block d-lg-none ml-auto"
                     type="button"
                     data-toggle="collapse"
                     data-target="#navbarSupportedContent"
@@ -76,27 +117,102 @@ class Nav extends React.Component {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                   >
-                    <i className="fas fa-align-justify" />
+                    <i class="fas fa-align-justify" />
                   </button>
 
                   <div
-                    className="collapse navbar-collapse"
+                    class="collapse navbar-collapse"
                     id="navbarSupportedContent"
                   >
-                    <ul className="nav navbar-nav ml-auto">
-                      <li className="nav-item active">
-                        <a className="nav-link" href="#">
-                          Log out
+                    <ul class="nav navbar-nav ml-auto">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                          Page
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                          Page
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                          Page
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                          Page
                         </a>
                       </li>
                     </ul>
                   </div>
                 </div>
               </nav>
-              <Route exact path="/AboutUs" component={AboutUs} />
+
+              <h2>Collapsible Sidebar Using Bootstrap 4</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+
+              <div class="line" />
+
+              <h2>Lorem Ipsum Dolor</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+
+              <div class="line" />
+
+              <h2>Lorem Ipsum Dolor</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+
+              <div class="line" />
+
+              <h3>Lorem Ipsum Dolor</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
             </div>
           </div>
         </div>
+
+        <div class="overlay" />
       </Router>
     );
   }
