@@ -1,5 +1,12 @@
 <?php
 
+//Calls the read function in plan.php which plans that the user_id that
+// was verified in the login page.
+
+// 
+// 
+// 
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
  
@@ -45,7 +52,7 @@ if($num>0){
             "code_end" => $code_end
         );
  
-        array_push($plans_arr["records"], $plan_info);
+        array_push($plans_arr["plans"], $plan_info);
     }
  
     // set response code - 200 OK
