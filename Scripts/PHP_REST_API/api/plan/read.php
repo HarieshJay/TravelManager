@@ -14,22 +14,35 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once '../config/database.php';
 include_once '../datastorage/plan.php';
 
+session_start();
  
 
 $database = new Database();
 $db = $database->getConnection();
+
+
+$sql = 'SELECT * FROM PlanInfo where user_id = ?';
+$stmt = $db->prepare($sql);
+
+
+$user_id = 7;
+
+// Session user_id will not work because login.php uses different session data
+// uncomment when login.php uses config/database.php
+// $user_id = $_SESSION['user_id'];
+
+
+$stmt->execute([$user_id]);
  
 
-$plan = new Plan($db);
 
-$stmt = $plan->read();
 $num = $stmt->rowCount();
 
 if($num>0){
  
     // products array
     $plans_arr=array();
-    $plans_arr["records"] = array();
+    $plans_arr["plans"] = array();
  
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         // extract row
@@ -68,7 +81,7 @@ else{
  
     // tell the user no products found
     echo json_encode(
-        array("message" => "No products found.")
+        array("message" => "No Products Founds")
     );
 }
 

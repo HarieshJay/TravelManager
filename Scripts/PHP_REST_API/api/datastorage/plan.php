@@ -30,7 +30,8 @@ function read(){
  
  
     $query = "SELECT * FROM $this->table_name where user_id = ?";
-    $user_id = $_SESSION['user_id'];
+    // $user_id = $_SESSION['user_id'];
+    $user_id = 7;
  
     // prepare query statement
     $stmt = $this->conn->prepare($query);
@@ -50,8 +51,6 @@ $sql = 'INSERT INTO PlanInfo(  user_id , plan_name, date_start, date_end, city_s
 
 $stmt = $this->conn->prepare($sql);
 
-echo "";
-
 
 
 if ($stmt->execute( [$this->user_id, $this->plan_name, $this->date_start, $this->date_end, $this->city_start, $this->city_end, $this->state_start, $this->state_end, $this->code_start, $this->code_end, $this->notes])){
@@ -63,6 +62,9 @@ return false;
 
 
 }
+
+
+
 
 
     
