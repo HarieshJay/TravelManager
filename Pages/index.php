@@ -4,6 +4,7 @@
 <head>
     <title></title>
 
+
     <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
@@ -16,6 +17,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
+
+
 
     <meta name="viewport" content="width=1280, initial-scale=1">
 
@@ -112,6 +115,10 @@ nav {
 
 }
 
+.display-1 {
+    font-size: 140px;
+}
+
 .p2-content {
     z-index: 50;
     color: white;
@@ -124,6 +131,8 @@ nav {
         background-image: url("http://paperlief.com/images/dark-forest-background-wallpaper-3.jpg");
         background-size: cover;
     }
+
+
 
 
 }
@@ -146,8 +155,8 @@ nav {
 
         <div class="mt-5 pt-5 position-sticky p1-content">
             <div class="container">
-                <h1 class="display-1 text-right">It Takes Two to Tango</h1>
-                <h1 class="text-right">Music is better with friends.</h4>
+                <h1 class="display-1 text-right">Travel Manager</h1>
+                <h1 class="display-3 text-right">Plan Better.</h1>
             </div>
         </div>
 
@@ -156,12 +165,40 @@ nav {
     <div class="p2-content w-100 h-100 vertical-center">
         <div class="container h-100 pt-4 pb-4">
             <div class="row align-items-center h-100">
-
+                <div class="col-11 mx-auto">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="card mb-3 shadow-lg" id="card1">
+                                <img class="card-img-top" src="images/plane.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark display-4">Explore.</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" id="card2">
+                            <div class="card mb-3 ">
+                                <img class="card-img-top" src="images/japan.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark display-4">Learn.</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" id="card3">
+                            <div class="card mb-3">
+                                <img class="card-img-top" src="images/relax.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark display-4">Recover.</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script type="text/javascript">
+    var fadeout = false;
     var siteWidth = 1280;
     var scale = screen.width / siteWidth
 
@@ -203,13 +240,41 @@ nav {
         $(window).scrollEnd(function() {
 
 
-            if ($(window).scrollTop() > 0 && $(window).scrollTop() < 350 && !isScrolling) {
+            if ($(window).scrollTop() > 0 && $(window).scrollTop() < 150 && !isScrolling) {
                 scroll(".p2-content");
 
             } else if ($(window).scrollTop() < $(".p2-content").offset().top && $(window).scrollTop() >
-                $(".p2-content").offset().top - 350 && !isScrolling) {
+                $(".p2-content").offset().top - 150 && !isScrolling) {
                 scroll("html");
 
+            }
+
+            if ($(window).scrollTop() > $(".p2-content").offset().top - 10 && fadeout) {
+                $("#card1").fadeIn(300, function() {
+                        $("#card2").fadeIn(400, function() {
+                            $("#card3").fadeIn(400);
+                        })
+                    }
+
+
+                )
+
+
+
+                ;
+                fadeout = false;
+
+
+            } else if (!fadeout && $(window).scrollTop() < $(".p2-content").offset().top) {
+                $("#card3").fadeOut(300, function() {
+                        $("#card2").fadeOut(400, function() {
+                            $("#card1").fadeOut(400);
+                        })
+                    }
+
+
+                )
+                fadeout = true;
             }
 
 
