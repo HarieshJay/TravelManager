@@ -6,7 +6,11 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
+$database = new Database();
+$db = $database->getConnection();
+
 session_start();
+
 
 $user_id = $_SESSION['user_id'];
 
@@ -17,8 +21,7 @@ include_once '../config/database.php';
 // instantiate product object
 include_once '../datastorage/plan.php';
  
-$database = new Database();
-$db = $database->getConnection();
+
 
 $data = json_decode(file_get_contents("php://input"));
 // $data is the JSON encoded POST data, if any, as an object.

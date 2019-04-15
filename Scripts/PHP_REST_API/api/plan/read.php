@@ -14,22 +14,26 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once '../config/database.php';
 include_once '../datastorage/plan.php';
 
-session_start();
- 
+
+
 
 $database = new Database();
 $db = $database->getConnection();
+
+session_start();
+
+
 
 
 $sql = 'SELECT * FROM PlanInfo where user_id = ?';
 $stmt = $db->prepare($sql);
 
 
-$user_id = 7;
+// $user_id = 7;
 
 // Session user_id will not work because login.php uses different session data
 // uncomment when login.php uses config/database.php
-// $user_id = $_SESSION['user_id'];
+$user_id = $_SESSION['user_id'];
 
 
 $stmt->execute([$user_id]);

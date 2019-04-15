@@ -1,14 +1,16 @@
 <?php 
 require_once "../Scripts/pdo.php";
+include '../Scripts/PHP_REST_API/api/config/database.php';
 include '../Scripts/nav.php';
+
+
+$database = new Database();
+$db = $database->getConnection();
 
 session_start();
 
 
-if ( isset($_SESSION['logged_in'])){
-	header("Location: home.php");
-	exit();
-	}
+
 
 
 
@@ -140,39 +142,35 @@ if (isset($_POST['Submit'])){
     <link rel="stylesheet" type="text/css" href="../Scripts/JavaScript/jquery.background-video.css">
 
 
-		<style type="text/css">
-		
-  
-
-
+    <style type="text/css">
     video {
         top: 0;
         left: 0;
-				z-index: -1;
-				Height: 110%;
-				overflow-x: hidden;
-				position: absolute;
-    		margin-left: auto;
-    		margin-right: auto;
-				
+        z-index: -1;
+        Height: 110%;
+        overflow-x: hidden;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+
     }
 
     #content {
         z-index: 10;
 
-		}
-		
-		.my-background-video{
+    }
 
-			z-index : -100;
-			
+    .my-background-video {
 
-		}
+        z-index: -100;
 
-		body{
-			overflow-x: hidden;
-			/* overflow-y: hidden;  */
-		}
+
+    }
+
+    body {
+        overflow-x: hidden;
+        /* overflow-y: hidden;  */
+    }
     </style>
 
 
