@@ -7,9 +7,18 @@
 // 
 // 
 
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
- 
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT, PATCH, OPTIONS');
+    header('Access-Control-Allow-Headers: token, Content-Type');
+    header('Access-Control-Max-Age: 1728000');
+    header('Content-Length: 0');
+    header('Content-Type: text/plain');
+    die();
+}
+
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
 
 include_once '../config/database.php';
 include_once '../datastorage/plan.php';
@@ -20,7 +29,10 @@ include_once '../datastorage/plan.php';
 $database = new Database();
 $db = $database->getConnection();
 
+
 session_start();
+
+
 
 
 
@@ -29,11 +41,11 @@ $sql = 'SELECT * FROM PlanInfo where user_id = ?';
 $stmt = $db->prepare($sql);
 
 
-// $user_id = 7;
+$user_id = 7;
 
 // Session user_id will not work because login.php uses different session data
 // uncomment when login.php uses config/database.php
-$user_id = $_SESSION['user_id'];
+// $user_id = $_SESSION['user_id'];
 
 
 $stmt->execute([$user_id]);
@@ -85,7 +97,7 @@ else{
  
     // tell the user no products found
     echo json_encode(
-        array("message" => "No Products Founds")
+        array("message" => $user_id)
     );
 }
 

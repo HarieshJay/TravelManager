@@ -4,112 +4,130 @@
 
 import React from "react";
 import "./Styles.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link } from "react-router-dom";
 import AboutUs from "./aboutus";
+import Friends from "./Friends";
+import Entertain from "./Entertain";
 import { notStrictEqual } from "assert";
 import { METHODS } from "http";
 
 // Side-nav tutorial https://bootstrapious.com/p/bootstrap-sidebar
 
 class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      PlanNames: []
+    };
+  }
+
+  componentDidMount() {
+    this.search();
+  }
+
+  search = () => {
+    var plans;
+    var search =
+      "http://localhost/TravelManager/Scripts/PHP_REST_API/api/plan/read.php";
+    fetch(search, {
+      credentials: "same-origin"
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        plans = data;
+      })
+      .then(() => {
+        this.update(plans);
+      })
+      .catch(err => {
+        alert(err);
+      });
+  };
+
+  update = info => {
+    var plans = [];
+    for (var i = 0; i < info.plans.length; i++) {
+      plans.push(info.plans[i].plan_name);
+    }
+
+    this.setState({ PlanNames: plans });
+  };
+
   render() {
+    let planList = [];
+    for (var i = 0; i < this.state.PlanNames.length; i++) {
+      planList.push(
+        <li>
+          <Link to="/Friends">{this.state.PlanNames[i]}</Link>
+        </li>
+      );
+    }
     return (
       <Router>
         <div>
-          <div class="wrapper">
+          <div className="wrapper">
             <nav id="sidebar">
-              <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
+              <div className="sidebar-header">
+                <h1>Travel Manager</h1>
               </div>
 
-              <ul class="list-unstyled components">
-                <p>Dummy Heading</p>
-                <li class="active">
-                  <a
-                    href="#homeSubmenu"
-                    data-toggle="collapse"
-                    aria-expanded="false"
-                    class="dropdown-toggle"
-                  >
-                    Home
-                  </a>
-                  <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                      <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                      <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                      <a href="#">Home 3</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a href="#">About</a>
-                </li>
+              <ul className="list-unstyled components">
                 <li>
                   <a
                     href="#pageSubmenu"
                     data-toggle="collapse"
                     aria-expanded="false"
-                    class="dropdown-toggle"
+                    className="dropdown-toggle"
                   >
-                    Pages
+                    Let's Tango
                   </a>
-                  <ul class="collapse list-unstyled" id="pageSubmenu">
+
+                  <ul className="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                      <a href="#">Page 1</a>
-                    </li>
-                    <li>
-                      <a href="#">Page 2</a>
-                    </li>
-                    <li>
-                      <a href="#">Page 3</a>
+                      <Link to="/Friends">I need a concert buddy</Link>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <a href="#">Portfolio</a>
-                </li>
-                <li>
-                  <a href="#">Contact</a>
-                </li>
-              </ul>
+                  <a
+                    href="#planSubmenu"
+                    data-toggle="collapse"
+                    aria-expanded="false"
+                    className="dropdown-toggle"
+                  >
+                    Plans
+                  </a>
 
-              <ul class="list-unstyled CTAs">
-                <li>
-                  <a
-                    href="https://bootstrapious.com/tutorial/files/sidebar.zip"
-                    class="download"
-                  >
-                    Download source
-                  </a>
+                  <ul className="collapse list-unstyled" id="planSubmenu">
+                    {planList}
+                  </ul>
                 </li>
-                <li>
-                  <a
-                    href="https://bootstrapious.com/p/bootstrap-sidebar"
-                    class="article"
+                <div className="text-center">
+                  <button
+                    type="button"
+                    className="btn btn-dark btn-lg navbar-btn"
                   >
-                    Back to article
-                  </a>
-                </li>
+                    Create Plan
+                  </button>
+                </div>
               </ul>
             </nav>
 
-            <div id="content">
-              <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
+            <div id="content" className="d-block">
+              <nav className="navbar navbar-expand-lg navbar-light bg-light top-navbar ">
+                <div className="container-fluid">
                   <button
                     type="button"
                     id="sidebarCollapse"
-                    class="btn btn-info"
+                    className="btn btn-info"
                   >
-                    <i class="fas fa-align-left" />
+                    <i className="fas fa-align-left" />
                     <span>Toggle Sidebar</span>
                   </button>
                   <button
-                    class="btn btn-dark d-inline-block d-lg-none ml-auto"
+                    className="btn btn-dark d-inline-block d-lg-none ml-auto"
                     type="button"
                     data-toggle="collapse"
                     data-target="#navbarSupportedContent"
@@ -117,32 +135,21 @@ class Nav extends React.Component {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                   >
-                    <i class="fas fa-align-justify" />
+                    <i className="fas fa-align-justify" />
                   </button>
 
                   <div
-                    class="collapse navbar-collapse"
+                    className="collapse navbar-collapse"
                     id="navbarSupportedContent"
                   >
-                    <ul class="nav navbar-nav ml-auto">
-                      <li class="nav-item active">
-                        <a class="nav-link" href="#">
-                          Page
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">
-                          Page
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">
-                          Page
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">
-                          Page
+                    <ul className="nav navbar-nav ml-auto">
+                      <li className="nav-item active">
+                        <a
+                          id="logout"
+                          className="nav-link"
+                          href="../../index.php"
+                        >
+                          Log out
                         </a>
                       </li>
                     </ul>
@@ -150,69 +157,10 @@ class Nav extends React.Component {
                 </div>
               </nav>
 
-              <h2>Collapsible Sidebar Using Bootstrap 4</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-
-              <div class="line" />
-
-              <h2>Lorem Ipsum Dolor</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-
-              <div class="line" />
-
-              <h2>Lorem Ipsum Dolor</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-
-              <div class="line" />
-
-              <h3>Lorem Ipsum Dolor</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
+              <Route path="/Friends" component={Friends} />
             </div>
           </div>
         </div>
-
-        <div class="overlay" />
       </Router>
     );
   }
