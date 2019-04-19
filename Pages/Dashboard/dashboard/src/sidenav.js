@@ -7,6 +7,7 @@ import "./Styles.css";
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import AboutUs from "./aboutus";
 import Friends from "./Friends";
+import Plan from "./plan";
 import Entertain from "./Entertain";
 import { notStrictEqual } from "assert";
 import { METHODS } from "http";
@@ -17,7 +18,7 @@ class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      PlanNames: []
+      PlanInfo: []
     };
   }
 
@@ -39,28 +40,37 @@ class Nav extends React.Component {
         plans = data;
       })
       .then(() => {
-        this.update(plans);
+        if (typeof plans != "undefined") {
+          this.update(plans);
+        }
       })
       .catch(err => {
-        alert(err);
+        // alert(err);
       });
   };
 
   update = info => {
     var plans = [];
     for (var i = 0; i < info.plans.length; i++) {
-      plans.push(info.plans[i].plan_name);
+      plans.push(info.plans[i]);
     }
 
-    this.setState({ PlanNames: plans });
+    this.setState({ PlanInfo: plans });
   };
 
   render() {
     let planList = [];
-    for (var i = 0; i < this.state.PlanNames.length; i++) {
+    for (var i = 0; i < this.state.PlanInfo.length; i++) {
+      console.log("/Plan/" + this.state.PlanInfo[i].plan_name);
       planList.push(
         <li>
-          <Link to="/Friends">{this.state.PlanNames[i]}</Link>
+          <Link
+            to={{
+              pathname: "/Plan/" + this.state.PlanInfo[i].plan_name
+            }}
+          >
+            {this.state.PlanInfo[i].plan_name}
+          </Link>
         </li>
       );
     }
@@ -158,6 +168,7 @@ class Nav extends React.Component {
               </nav>
 
               <Route path="/Friends" component={Friends} />
+              <Route path="/Plan/:id" component={Plan} />
             </div>
           </div>
         </div>
