@@ -1,5 +1,6 @@
 import React from "react";
 import "./Styles.css";
+import TomTomMap from "./map";
 
 class Plan extends React.Component {
   constructor(props) {
@@ -67,18 +68,33 @@ class Plan extends React.Component {
   };
   render() {
     return (
-      <div class="jumbotron">
-        <h1 class="display-4">{this.state.PlanInfo.plan_name}</h1>
-        <p class="lead">{this.dateinfo}</p>
-        <hr class="my-4" />
-        <p class="lead">
-          <a class="btn btn-danger btn-lg" href="#" role="button">
-            Delete Plan
-          </a>
-          <a class=" ml-3 btn btn-secondary btn-lg" href="#" role="button">
-            Update Info
-          </a>
-        </p>
+      <div>
+        <div className="row">
+          <div className="col-12">
+            <div class="jumbotron ">
+              <h1 class="display-4">{this.state.PlanInfo.plan_name}</h1>
+              <p class="lead">{this.dateinfo}</p>
+              <hr class="my-4" />
+              <p class="lead">
+                <a class="btn btn-danger btn-lg" href="#" role="button">
+                  Delete Plan
+                </a>
+                <a
+                  class=" ml-3 btn btn-secondary btn-lg"
+                  href="#"
+                  role="button"
+                >
+                  Update Info
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-5">
+            <TomTomMap />
+          </div>
+        </div>
       </div>
     );
   }
