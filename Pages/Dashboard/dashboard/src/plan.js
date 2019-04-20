@@ -1,6 +1,7 @@
 import React from "react";
 import "./Styles.css";
 import TomTomMap from "./map";
+import Tasks from "./Tasks";
 
 class Plan extends React.Component {
   constructor(props) {
@@ -51,7 +52,6 @@ class Plan extends React.Component {
       for (var i = 0; i < info.plans.length; i++) {
         if (info.plans[i].plan_name === this.state.plan_name) {
           this.setState({ PlanInfo: info.plans[i] });
-          console.log(this.state.PlanInfo);
         }
       }
 
@@ -103,11 +103,13 @@ class Plan extends React.Component {
           </div>
         </div>
         <div className="row mt-3">
-          <div className="col-5">
+          <div className="col-4">
             <TomTomMap />
           </div>
 
-          <div className="col-5" />
+          <div className="col-8">
+            <Tasks plan_id="26" />
+          </div>
         </div>
       </div>
     );

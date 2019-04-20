@@ -61,7 +61,6 @@ class Nav extends React.Component {
   render() {
     let planList = [];
     for (var i = 0; i < this.state.PlanInfo.length; i++) {
-      console.log("/Plan/" + this.state.PlanInfo[i].plan_name);
       planList.push(
         <li>
           <Link
