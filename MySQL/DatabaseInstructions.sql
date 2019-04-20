@@ -29,3 +29,20 @@ CREATE TABLE PlanInfo (
 
 
 );
+
+
+CREATE TABLE Tasks (
+	plan_id INTEGER,
+	user_id INTEGER,
+	task_id INTEGER NOT NULL AUTO_INCREMENT,
+	task_name VARCHAR(128),
+	task_details TEXT,
+	completed BOOLEAN,
+	PRIMARY KEY(task_id),
+	FOREIGN KEY (user_id) REFERENCES Users (user_id),
+	FOREIGN KEY (plan_id) REFERENCES PlanInfo (plan_id)
+
+
+
+
+) ENGINE=InnoDB CHARSET=utf8;
