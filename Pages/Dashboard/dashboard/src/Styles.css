@@ -190,6 +190,18 @@ a.article:hover {
   width: 100%;
 }
 
+@media (min-width: 768px) {
+  .row.equal {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.jumbotron {
+  margin-bottom: 0;
+  padding: 2rem 1rem;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

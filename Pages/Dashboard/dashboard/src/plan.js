@@ -69,9 +69,9 @@ class Plan extends React.Component {
   render() {
     return (
       <div>
-        <div className="row">
-          <div className="col-12">
-            <div class="jumbotron ">
+        <div className="row shadows">
+          <div className="col-6">
+            <div class="jumbotron shadow h-100">
               <h1 class="display-4">{this.state.PlanInfo.plan_name}</h1>
               <p class="lead">{this.dateinfo}</p>
               <hr class="my-4" />
@@ -89,11 +89,25 @@ class Plan extends React.Component {
               </p>
             </div>
           </div>
+          <div className="col-6">
+            <div class="jumbotron h-100 bg-light shadow">
+              <iframe
+                id="forecast_embed"
+                frameborder="0"
+                height="245"
+                width="100%"
+                src="//forecast.io/embed/#lat=42.3583&lon=-71.0603&name=Downtown Boston&color=#00aaff&font=Georgia&units=uk"
+              />
+            </div>
+            <div />
+          </div>
         </div>
-        <div className="row">
+        <div className="row mt-3">
           <div className="col-5">
             <TomTomMap />
           </div>
+
+          <div className="col-5" />
         </div>
       </div>
     );
