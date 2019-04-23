@@ -65,7 +65,11 @@ class Nav extends React.Component {
         <li>
           <Link
             to={{
-              pathname: "/Plan/" + this.state.PlanInfo[i].plan_name
+              pathname:
+                "/Plan/" +
+                this.state.PlanInfo[i].plan_name +
+                "/" +
+                this.state.PlanInfo[i].plan_id
             }}
           >
             {this.state.PlanInfo[i].plan_name}
@@ -112,6 +116,12 @@ class Nav extends React.Component {
                   <ul className="collapse list-unstyled" id="planSubmenu">
                     {planList}
                   </ul>
+                </li>
+                <li>
+                  <Link>Contact Us</Link>
+                </li>
+                <li>
+                  <Link>About Travel Manager</Link>
                 </li>
                 <div className="text-center">
                   <button
@@ -167,7 +177,7 @@ class Nav extends React.Component {
               </nav>
 
               <Route path="/Friends" component={Friends} />
-              <Route path="/Plan/:id" component={Plan} />
+              <Route path="/Plan/:plan_name/:plan_id" component={Plan} />
             </div>
           </div>
         </div>

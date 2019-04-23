@@ -7,8 +7,11 @@ class Plan extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      plan_name: props.match.params.id,
-      PlanInfo: {}
+      plan_id: props.match.params.plan_id,
+      plan_name: props.match.params.plan_name,
+      PlanInfo: {},
+      lat: 0,
+      long: 0
     };
     this.dateinfo = "";
   }
@@ -18,9 +21,13 @@ class Plan extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.setState({ plan_name: this.props.match.params.id });
+    if (prevProps.match.params.plan_id !== this.props.match.params.plan_id) {
+      this.setState({
+        plan_name: this.props.match.params.plan_name,
+        plan_id: this.props.match.params.plan_id
+      });
       this.search();
+      console.log("update");
     }
   }
 
@@ -67,6 +74,34 @@ class Plan extends React.Component {
     }
   };
   render() {
+    var long;
+    var lat;
+    if (this.state.plan_id === 26) {
+      // Boston
+      lat = 42.361145;
+      long = -71.057083;
+      // this.setState({ lat: 43.6532, long: 79.3832 });
+    } else if (this.state.plan_id === 27) {
+      //Toronto
+      // this.setState({ lat: 43.6532, long: 79.3832 });
+      lat = 40.7648;
+      long = -73.9808;
+    } else if (this.state.plan_id === 28) {
+      //New York
+      // this.state.lat = 40.7128;
+      // this.state.long = 74.006;
+      // this.setState({ lat: 43.6532, long: 79.3832 });
+      lat = 40.7128;
+      long = -74.006;
+    } else {
+      //Chicago
+      // this.state.lat = 41.8781;
+      // this.state.long = 87.6298;
+      // this.setState({ lat: 43.6532, long: 79.3832 });
+      lat = 41.8781;
+      long = -87.6298;
+    }
+    console.log(this.state);
     return (
       <div>
         <div className="row shadows">
@@ -96,7 +131,7 @@ class Plan extends React.Component {
                 frameborder="0"
                 height="245"
                 width="100%"
-                src="//forecast.io/embed/#lat=42.3583&lon=-71.0603&name=Downtown Boston&color=#00aaff&font=Georgia&units=uk"
+                src="//forecast.io/embed/#lat=42.3583&lon=-71.0603&name=your Area&color=#00aaff&font=Georgia&units=uk"
               />
             </div>
             <div />
@@ -104,11 +139,11 @@ class Plan extends React.Component {
         </div>
         <div className="row mt-3">
           <div className="col-4">
-            <TomTomMap />
+            <TomTomMap lat={lat} long={long} />
           </div>
 
           <div className="col-8">
-            <Tasks plan_id="26" />
+            <Tasks plan_id={this.state.plan_id} />
           </div>
         </div>
       </div>

@@ -13,6 +13,15 @@ class Tasks extends React.Component {
     this.search();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.plan_id !== this.props.plan_id) {
+      this.setState({
+        plan_id: this.props.plan_id
+      });
+    }
+    this.search();
+  }
+
   search = () => {
     var tasks;
     var search =
@@ -49,15 +58,17 @@ class Tasks extends React.Component {
   };
   render() {
     var taskslist = [];
-
-    for (var i = 0; i < this.state.tasks.length; i++) {
-      taskslist.push(
-        <OneTask
-          task_id={this.state.tasks[i].task_id}
-          task_name={this.state.tasks[i].task_name}
-        />
-      );
+    if (typeof this.state.tasks != "undefined") {
+      for (var i = 0; i < this.state.tasks.length; i++) {
+        taskslist.push(
+          <OneTask
+            task_id={this.state.tasks[i].task_id}
+            task_name={this.state.tasks[i].task_name}
+          />
+        );
+      }
     }
+
     return (
       <ul class="list-group shadow">
         <li class="list-group-item bg-dark text-white">Tasks</li>
